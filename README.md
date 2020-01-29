@@ -1,4 +1,9 @@
-# Nextflow training for CRG PhD course 2019
+# Nextflow FAANG workshop
+
+# Enabling reproducible data analysis with Nextflow and containers
+
+Project repository for the shared FAANG workshop taking place on the 25th-27th February 2020  in the Wellcome 
+Genome Campus, Hinxton, Cambridge, UK.
 
 ## Nextflow in a nutshell 
 
@@ -9,6 +14,7 @@ A workflow engine for data analysis pipelines with a strong focus on enabling:
 * Usability 
 
 ### How? 
+
 * Functional/reactive programming model 
 * Decoupling and isolating tasks 
 * Concise domain specific language for recurrent task operations
@@ -24,7 +30,7 @@ A workflow engine for data analysis pipelines with a strong focus on enabling:
 * [Singularity](https://github.com/sylabs/singularity) 2.5.x (or later, optional)
 * [Conda](https://conda.io/) 4.5 (or later, optional) 
 * [Graphviz](http://www.graphviz.org/) (optional)
-* AWS Batch computing environment properly configured (optional)
+* [AWS Batch](https://aws.amazon.com/batch/) computing environment properly configured (optional)
 
 
 ## Installation 
@@ -32,7 +38,7 @@ A workflow engine for data analysis pipelines with a strong focus on enabling:
 Clone this repository with the following command: 
 
 ```
-git clone https://github.com/cbcrg/nf-phdcourse19.git && cd nf-phdcourse19
+git clone https://github.com/BovReg/nf-faang-workshop20.git && cd nf-faang-workshop20
 ```
 
 Then, install Nextflow by using the following command: 
@@ -840,4 +846,10 @@ docker pull nextflow/rnaseq-nf@sha256:aeacbd7ea1154f263cda972a96920fb228b2033544
 * [Nextflow patterns](https://github.com/nextflow-io/patterns) - A collection of Nextflow implementation patterns.
 * [CalliNGS-NF](https://github.com/CRG-CNAG/CalliNGS-NF) - An Variant calling pipeline implementing GATK best practices. 
 * [nf-core](http://nf-co.re/) - A community collection of production ready genomic pipelines. 
+
+## Funding
+
+BovReg project has received funding from the European Union’s Horizon 2020 research and innovation program under Grant 
+Agreement ID. [815668](https://cordis.europa.eu/project/id/815668).
+
 
