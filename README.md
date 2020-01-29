@@ -1,8 +1,6 @@
-# Nextflow FAANG workshop
-
 # Enabling reproducible data analysis with Nextflow and containers
 
-Project repository for the shared FAANG workshop taking place on the 25th-27th February 2020  in the Wellcome 
+Project repository for the shared FAANG workshop taking place on the 26th of February 2020  in the Wellcome 
 Genome Campus, Hinxton, Cambridge, UK.
 
 ## Nextflow in a nutshell 
@@ -844,8 +842,9 @@ docker pull nextflow/rnaseq-nf@sha256:aeacbd7ea1154f263cda972a96920fb228b2033544
 
 * [Nextflow documentation](http://docs.nextflow.io) - The Nextflow docs home.
 * [Nextflow patterns](https://github.com/nextflow-io/patterns) - A collection of Nextflow implementation patterns.
+* [Nextflow gitter](https://gitter.im/nextflow-io/nextflow) - Nextflow channel on Gitter where you can post your questions. 
 * [CalliNGS-NF](https://github.com/CRG-CNAG/CalliNGS-NF) - An Variant calling pipeline implementing GATK best practices. 
-* [nf-core](http://nf-co.re/) - A community collection of production ready genomic pipelines. 
+* [nf-core](http://nf-co.re/) - A community collection of production ready omics pipelines. 
 
 ## Funding
 
