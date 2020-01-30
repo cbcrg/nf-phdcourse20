@@ -38,27 +38,33 @@ process index {
     """
 }
 
-
 Channel 
     .fromFilePairs( params.reads, checkIfExists:true )
     .into { read_pairs_ch; read_pairs2_ch } 
 
+/*
+ * Run Salmon to perform the quantification of expression using
+ * the index and the matched read files
+ */
 process quantification {
     tag "$pair_id"
-         
+
     input:
     file index from index_ch
     set pair_id, file(reads) from read_pairs_ch
- 
+
     output:
     file(pair_id) into quant_ch
- 
+
     script:
     """
     salmon quant --threads $task.cpus --libType=U -i $index -1 ${reads[0]} -2 ${reads[1]} -o $pair_id
     """
 }
 
+/*
+ * Run fastQC to check quality of reads files
+ */
 process fastqc {
     tag "FASTQC on $sample_id"
 
@@ -73,25 +79,27 @@ process fastqc {
     """
     mkdir fastqc_${sample_id}_logs
     fastqc -o fastqc_${sample_id}_logs -f fastq -q ${reads}
-    """  
-}  
- 
+    """
+}
 
+/*
+ * Create a report using multiQC for the quantification
+ * and fastqc processes
+ */
 process multiqc {
     publishDir params.outdir, mode:'copy'
-       
+
     input:
     file('*') from quant_ch.mix(fastqc_ch).collect()
-    
+
     output:
-    file('multiqc_report.html')  
-     
+    file('multiqc_report.html')
+
     script:
     """
-    multiqc . 
+    multiqc .
     """
-} 
-
+}
 
 workflow.onComplete { 
 	log.info ( workflow.success ? "\nDone! Open the following report in your browser --> $params.outdir/multiqc_report.html\n" : "Oops .. something went wrong" )

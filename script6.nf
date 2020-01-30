@@ -43,6 +43,10 @@ Channel
     .fromFilePairs( params.reads, checkIfExists:true )
     .into { read_pairs_ch; read_pairs2_ch } 
 
+/*
+ * Run Salmon to perform the quantification of expression using
+ * the index and the matched read files
+ */
 process quantification {
     tag "$pair_id"
          
@@ -59,6 +63,9 @@ process quantification {
     """
 }
 
+/*
+ * Run fastQC to check quality of reads files
+ */
 process fastqc {
     tag "FASTQC on $sample_id"
 
@@ -76,7 +83,10 @@ process fastqc {
     """  
 }  
  
-
+/*
+ * Create a report using multiQC for the quantification
+ * and fastqc processes
+ */
 process multiqc {
     publishDir params.outdir, mode:'copy'
        
