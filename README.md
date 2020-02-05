@@ -19,7 +19,7 @@ Genome Campus, Hinxton, Cambridge, UK.
     * [Step 10 - Run in the cloud using AWS Batch](#Step-10---Run-in-the-cloud-using-AWS-Batch)
     * [Step 11 - Use configuration profiles](#Step-11---Use-configuration-profiles)
     * [Step 12 - Run a pipeline from a GitHub repository](#Step-12---Run-a-pipeline-from-a-GitHub-repository)
-    * [Conda/Bioconda packages](#Conda\/Bioconda-packages)
+    * [Conda/Bioconda packages](#conda)
     * [Metrics and reports](#Metrics-and-reports)
     * [Docker hands-on](#Docker-hands-on)
         * [Step 1 - Run a container](#Step-1---Run-a-container)
@@ -30,7 +30,7 @@ Genome Campus, Hinxton, Cambridge, UK.
         * [Step 6 - Add a software package to the image](#Step-6---Add-a-software-package-to-the-image)
         * [Step 7 - Run Salmon in the container](#Step-7---Run-Salmon-in-the-container)
         * [Step 8 - File system mounts](#Step-8---File-system-mounts)
-        * [Step 9 - Upload the container in the Docker Hub (bonus)](#Step-9---Upload-the-container-in-the-Docker-Hub-(bonus))
+        * [Step 9 - Upload the container in the Docker Hub (bonus)](#DockerHub)
 * [More resources](#More-resources)
 
 ## Nextflow in a nutshell 
@@ -597,7 +597,7 @@ Revision are defined by using Git tags or branches defined in the project reposi
 This allows a precise control of the changes in your project files and dependencies over time. 
 
 
-## Conda/Bioconda packages
+## <a name="conda"></a> Conda/Bioconda packages
 
 Conda is popular package and environment manager. The built-in support for Conda
 allows Nextflow pipelines to automatically creates and activates the Conda 
@@ -824,7 +824,7 @@ docker run --volume $HOME:$HOME --workdir $PWD my-image \
   salmon index -t $PWD/data/ggal/transcriptome.fa -i index
 ```
 
-### Step 9 - Upload the container in the Docker Hub (bonus)
+### <a name="DockerHub"></a> Step 9 - Upload the container in the Docker Hub (bonus)
 
 Publish your container in the Docker Hub to share it with other people. 
 
