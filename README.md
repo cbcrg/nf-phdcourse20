@@ -3,9 +3,52 @@
 Project repository for the shared FAANG workshop taking place on the 26th of February 2020  in the Wellcome 
 Genome Campus, Hinxton, Cambridge, UK.
 
+## Table of Contents
+
+* [Installation](#Installation)
+* [Nextflow hands-on](#Nextflow-hands-on)
+    * [Step 1 - define the pipeline parameters](#Step-1---define-the-pipeline-parameters)
+        * [Exercise 1.1](#ex-1.1)
+        * [Exercise 1.1](#ex-1.2)
+    * [Step 2 - Create transcriptome index file](#index)
+        * [Exercise 2.1](#ex-2.1)
+        * [Exercise 2.2](#ex-2.2)
+        * [Exercise 2.3](#ex-2.3)
+    * [Step 3 - Collect read files by pairs](#file_by_pairs)
+        * [Exercise 3.1](#ex-3.1)
+        * [Exercise 3.2](#ex-3.2)
+    * [Step 4 - Perform expression quantification](#quantification)
+        * [Exercise 4.1](#ex-4.1)
+        * [Exercise 4.2](#ex-4.2)
+    * [Step 5 - Quality control](#QC)
+        * [Exercise 5.1](#ex-5.1)
+    * [Step 6 - MultiQC report](#multiqc)
+    * [Step 7 - Handle completion event](#completion)
+    * [Step 8 - Custom scripts](#scripts)
+    * [Step 9 - Executors](#executors)
+        * [Exercise 9.1](#ex-9.1)
+        * [Exercise 9.2](#ex-9.2)  
+    * [Step 10 - Run in the cloud using AWS Batch](#AWS)    
+    * [Step 11 - Use configuration profiles](#profiles)
+    * [Step 12 - Run a pipeline from a GitHub repository](#repository)
+    * [Conda/Bioconda packages](#conda)
+    * [Metrics and reports](#reports)
+    * [Docker hands-on](#docker)
+        * [Step 1 - Run a container](#run_container)
+        * [Step 2 - Pull a container](#pull_container)
+        * [Step 3 - Run a container in interactive mode](#interactive_container)
+        * [Step 4 - Your first Dockerfile](#first_dockerfile)
+        * [Step 5 - Build the image](#build)
+        * [Step 6 - Add a software package to the image](#software)
+        * [Step 7 - Run Salmon in the container](#salmon)
+        * [Step 8 - File system mounts](#file_system)
+        * [Step 9 - Upload the container in the Docker Hub (bonus)](#dockerhub)
+* [More resources](#resources)
+
 ## Nextflow in a nutshell 
 
-A workflow engine for data analysis pipelines with a strong focus on enabling: 
+A workflow engine for data analysis pipelines with a strong focus on enabling:
+
 * Portability 
 * Reproducibility 
 * Scalability 
@@ -31,7 +74,7 @@ A workflow engine for data analysis pipelines with a strong focus on enabling:
 * [AWS Batch](https://aws.amazon.com/batch/) computing environment properly configured (optional)
 
 
-## Installation 
+## Installation
 
 Clone this repository with the following command: 
 
@@ -77,12 +120,12 @@ Try to specify a different input parameter, for example:
 ./nextflow run script1.nf --reads this/and/that
 ```
 
-#### Exercise 1.1 
+#### <a name="ex-1.1"></a> Exercise 1.1 
 
 Modify the `script1.nf` adding a fourth parameter named `outdir` and set it to a default path
 that will be used as the pipeline output directory. 
 
-#### Exercise 1.2 
+#### <a name="ex-1.2"></a>  Exercise 1.2 
 
 Modify the `script1.nf` to print all the pipeline parameters using `log.info` instead
 of the `println` command and a [multiline string](https://www.nextflow.io/docs/latest/script.html#multi-line-strings)
@@ -101,7 +144,7 @@ In this step you have learned:
 5. How to use `log.info` to report values 
 
 
-### Step 2 - Create transcriptome index file
+### <a name="index"></a> Step 2 - Create transcriptome index file
 
 Nextflow allows the execution of any command or user script by using a `process` definition. 
 
@@ -141,15 +184,15 @@ In order to avoid to add the option `-with-docker` add the following line in the
 docker.enabled = true
 ```
 
-#### Exercise 2.1 
+#### <a name="ex-2.1"></a> Exercise 2.1 
 
 Enable the Docker execution by default adding the above setting in the `nextflow.config` file.
 
-#### Exercise 2.2 
+#### <a name="ex-2.2"></a> Exercise 2.2 
 
 Print the output of the `index_ch` channel by using the [view](https://www.nextflow.io/docs/latest/operator.html#view) operator.
 
-#### Exercise 2.3 
+#### <a name="ex-2.3"></a> Exercise 2.3 
 
 Use the command `tree work` to see how Nextflow organises the process work directory. 
  
@@ -164,7 +207,7 @@ In this step you have learned:
 5. How to print the content of a channel
 
 
-### Step 3 - Collect read files by pairs
+### <a name="file_by_pairs"></a> Step 3 - Collect read files by pairs
 
 This step shows how to match *read* files into pairs, so they can be mapped by *Salmon*. 
 
@@ -196,12 +239,12 @@ Try it again specifying different read files by using a glob pattern:
 ./nextflow run script3.nf --reads 'data/ggal/*_{1,2}.fq'
 ```
 
-#### Exercise 3.1 
+#### <a name="ex-3.1"></a> Exercise 3.1 
 
 Use the [set](https://www.nextflow.io/docs/latest/operator.html#set) operator in place 
 of `=` assignment to define the `read_pairs_ch` channel. 
 
-#### Exercise 3.2 
+#### <a name="ex-3.2"></a> Exercise 3.2 
 
 Use the `checkIfExists` for the [fromFilePairs](https://www.nextflow.io/docs/latest/channel.html#fromfilepairs) method to make sure it returns some file pairs. 
 
@@ -215,7 +258,7 @@ In this step you have learned:
 3. How to use the `checkIfExists` option.
 
 
-### Step 4 - Perform expression quantification 
+### <a name="quantification"></a> Step 4 - Perform expression quantification 
 
 The script `script4.nf` adds the `quantification` process. 
 
@@ -271,7 +314,7 @@ In this step you have learned:
 4. How to use the `publishDir` to store a process results in a path of your choice 
 
 
-### Step 5 - Quality control 
+### <a name="QC"></a> Step 5 - Quality control 
 
 This step implements a quality control of your input reads. The inputs are the same 
 read pairs which are provided to the `quantification` steps
@@ -304,7 +347,7 @@ In this step you have learned:
 1. How to use the `into` operator to create multiple copies of the same channel
 
 
-### Step 6 - MultiQC report 
+### <a name="multiqc"></a> Step 6 - MultiQC report 
 
 This step collect the outputs from the `quantification` and `fastqc` steps to create 
 a final report by using the [MultiQC](http://multiqc.info/) tool.
@@ -333,8 +376,7 @@ In this step you have learned:
 3. How to chain two or more operators togethers 
 
 
-
-### Step 7 - Handle completion event
+### <a name="index"></a> Step 7 - Handle completion event
 
 This step shows how to execute an action when the pipeline completes the execution. 
 
@@ -838,11 +880,15 @@ in a univocally manner. For example:
 docker pull nextflow/rnaseq-nf@sha256:aeacbd7ea1154f263cda972a96920fb228b2033544c2641476350b9317dab266
 ```
 
-## More resources 
+## Where to get help
 
 * [Nextflow documentation](http://docs.nextflow.io) - The Nextflow docs home.
 * [Nextflow patterns](https://github.com/nextflow-io/patterns) - A collection of Nextflow implementation patterns.
-* [Nextflow gitter](https://gitter.im/nextflow-io/nextflow) - Nextflow channel on Gitter where you can post your questions. 
+* [Nextflow gitter](https://gitter.im/nextflow-io/nextflow) - Nextflow channel on Gitter where you can post your 
+questions. 
+
+## More resources 
+
 * [CalliNGS-NF](https://github.com/CRG-CNAG/CalliNGS-NF) - An Variant calling pipeline implementing GATK best practices. 
 * [nf-core](http://nf-co.re/) - A community collection of production ready omics pipelines. 
 
