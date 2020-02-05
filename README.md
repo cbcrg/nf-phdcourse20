@@ -5,6 +5,9 @@ Genome Campus, Hinxton, Cambridge, UK.
 
 ## Table of Contents
 
+* [Nextflow in a nutshell](#Nextflow-in-a-nutshell)
+    * [How?](#How)
+    * [Prerequisites](#Prerequisites)
 * [Installation](#Installation)
 * [Nextflow hands-on](#Nextflow-hands-on)
     * [Step 1 - define the pipeline parameters](#Step-1---define-the-pipeline-parameters)        
@@ -42,7 +45,7 @@ A workflow engine for data analysis pipelines with a strong focus on enabling:
 * Scalability 
 * Usability 
 
-### How? 
+### <a name="How"></a> How? 
 
 * Functional/reactive programming model 
 * Decoupling and isolating tasks 
@@ -51,7 +54,7 @@ A workflow engine for data analysis pipelines with a strong focus on enabling:
 * Hide complexity
 * Coexists with errors (!) 
 
-### Prerequisite
+### Prerequisites
 
 * Unix-like OS (Linux, macOS, etc.)
 * [Java](http://jdk.java.net/) 8 or later 
