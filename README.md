@@ -131,7 +131,7 @@ In this step you have learned:
 5. How to use `log.info` to report values 
 
 
-### <a name="index"></a> Step 2 - Create transcriptome index file
+### Step 2 - Create transcriptome index file
 
 Nextflow allows the execution of any command or user script by using a `process` definition. 
 
@@ -171,15 +171,15 @@ In order to avoid to add the option `-with-docker` add the following line in the
 docker.enabled = true
 ```
 
-#### <a name="ex-2.1"></a> Exercise 2.1 
+#### Exercise 2.1 
 
 Enable the Docker execution by default adding the above setting in the `nextflow.config` file.
 
-#### <a name="ex-2.2"></a> Exercise 2.2 
+#### Exercise 2.2 
 
 Print the output of the `index_ch` channel by using the [view](https://www.nextflow.io/docs/latest/operator.html#view) operator.
 
-#### <a name="ex-2.3"></a> Exercise 2.3 
+#### Exercise 2.3 
 
 Use the command `tree work` to see how Nextflow organises the process work directory. 
  
@@ -194,7 +194,7 @@ In this step you have learned:
 5. How to print the content of a channel
 
 
-### <a name="file_by_pairs"></a> Step 3 - Collect read files by pairs
+### Step 3 - Collect read files by pairs
 
 This step shows how to match *read* files into pairs, so they can be mapped by *Salmon*. 
 
@@ -226,12 +226,12 @@ Try it again specifying different read files by using a glob pattern:
 ./nextflow run script3.nf --reads 'data/ggal/*_{1,2}.fq'
 ```
 
-#### <a name="ex-3.1"></a> Exercise 3.1 
+#### Exercise 3.1 
 
 Use the [set](https://www.nextflow.io/docs/latest/operator.html#set) operator in place 
 of `=` assignment to define the `read_pairs_ch` channel. 
 
-#### <a name="ex-3.2"></a> Exercise 3.2 
+#### Exercise 3.2 
 
 Use the `checkIfExists` for the [fromFilePairs](https://www.nextflow.io/docs/latest/channel.html#fromfilepairs) method to make sure it returns some file pairs. 
 
@@ -245,7 +245,7 @@ In this step you have learned:
 3. How to use the `checkIfExists` option.
 
 
-### <a name="quantification"></a> Step 4 - Perform expression quantification 
+### Step 4 - Perform expression quantification 
 
 The script `script4.nf` adds the `quantification` process. 
 
@@ -301,7 +301,7 @@ In this step you have learned:
 4. How to use the `publishDir` to store a process results in a path of your choice 
 
 
-### <a name="QC"></a> Step 5 - Quality control 
+### Step 5 - Quality control 
 
 This step implements a quality control of your input reads. The inputs are the same 
 read pairs which are provided to the `quantification` steps
@@ -334,7 +334,7 @@ In this step you have learned:
 1. How to use the `into` operator to create multiple copies of the same channel
 
 
-### <a name="multiqc"></a> Step 6 - MultiQC report 
+### Step 6 - MultiQC report 
 
 This step collect the outputs from the `quantification` and `fastqc` steps to create 
 a final report by using the [MultiQC](http://multiqc.info/) tool.
@@ -363,7 +363,7 @@ In this step you have learned:
 3. How to chain two or more operators togethers 
 
 
-### <a name="index"></a> Step 7 - Handle completion event
+### Step 7 - Handle completion event
 
 This step shows how to execute an action when the pipeline completes the execution. 
 
