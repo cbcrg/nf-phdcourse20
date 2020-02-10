@@ -22,8 +22,8 @@ Genome Campus, Hinxton, Cambridge, UK.
     * [Step 10 - Run in the cloud using AWS Batch](#Step-10---Run-in-the-cloud-using-AWS-Batch)
     * [Step 11 - Use configuration profiles](#Step-11---Use-configuration-profiles)
     * [Step 12 - Run a pipeline from a GitHub repository](#Step-12---Run-a-pipeline-from-a-GitHub-repository)
-    * [Conda/Bioconda packages](#conda)
-    * [Metrics and reports](#Metrics-and-reports)
+    * [Step 13 - Conda/Bioconda packages](#conda)
+    * [Step 14 - Metrics and reports](#Step-14---Metrics-and-reports)
     * [Docker hands-on](#Docker-hands-on)
         * [Step 1 - Run a container](#Step-1---Run-a-container)
         * [Step 2 - Pull a container](#Step-2---Pull-a-container)
@@ -34,6 +34,7 @@ Genome Campus, Hinxton, Cambridge, UK.
         * [Step 7 - Run Salmon in the container](#Step-7---Run-Salmon-in-the-container)
         * [Step 8 - File system mounts](#Step-8---File-system-mounts)
         * [Step 9 - Upload the container in the Docker Hub (bonus)](#DockerHub)
+* [Where to get help](#Where-to-get-help)        
 * [More resources](#More-resources)
 
 ## Nextflow in a nutshell 
@@ -95,7 +96,7 @@ During this tutorial you will implement a proof of concept of a RNA-seq pipeline
 3. Performs quantification.
 4. Create a MultiqQC report. 
 
-## Step 1 - define the pipeline parameters 
+### Step 1 - define the pipeline parameters 
 
 The script `script1.nf` defines the pipeline input parameters. Run it by using the 
 following command: 
@@ -886,5 +887,3 @@ questions.
 
 BovReg project has received funding from the European Union’s Horizon 2020 research and innovation program under Grant 
 Agreement ID. [815668](https://cordis.europa.eu/project/id/815668).
-
-
