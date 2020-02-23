@@ -10,30 +10,30 @@ Genome Campus, Hinxton, Cambridge, UK.
     * [Prerequisites](#Prerequisites)
 * [Installation](#Installation)
 * [Nextflow hands-on](#Nextflow-hands-on)
-    * [Step 1 - define the pipeline parameters](#Step-1---define-the-pipeline-parameters)        
-    * [Step 2 - Create transcriptome index file](#Step-2---Create-transcriptome-index-file)
-    * [Step 3 - Collect read files by pairs](#Step-3---Collect-read-files-by-pairs)        
-    * [Step 4 - Perform expression quantification](#Step-4---Perform-expression-quantification)        
-    * [Step 5 - Quality control](#Step-5---Quality-control)
-    * [Step 6 - MultiQC report](#Step-6---MultiQC-report)
-    * [Step 7 - Handle completion event](#Step-7---Handle-completion-event)
-    * [Step 8 - Custom scripts](#Step-8---Custom-scripts)
-    * [Step 9 - Executors](#Step-9---Executors)
-    * [Step 10 - Run in the cloud using AWS Batch](#Step-10---Run-in-the-cloud-using-AWS-Batch)
-    * [Step 11 - Use configuration profiles](#Step-11---Use-configuration-profiles)
-    * [Step 12 - Run a pipeline from a GitHub repository](#Step-12---Run-a-pipeline-from-a-GitHub-repository)
-    * [Step 13 - Conda/Bioconda packages](#conda)
-    * [Step 14 - Metrics and reports](#Step-14---Metrics-and-reports)
-    * [Docker hands-on](#Docker-hands-on)
-        * [Step 1 - Run a container](#Step-1---Run-a-container)
-        * [Step 2 - Pull a container](#Step-2---Pull-a-container)
-        * [Step 3 - Run a container in interactive mode](#Step-3---Run-a-container-in-interactive-mode)
-        * [Step 4 - Your first Dockerfile](#Step-4---Your-first-Dockerfile)
-        * [Step 5 - Build the image](#Step-5---Build-the-image)
-        * [Step 6 - Add a software package to the image](#Step-6---Add-a-software-package-to-the-image)
-        * [Step 7 - Run Salmon in the container](#Step-7---Run-Salmon-in-the-container)
-        * [Step 8 - File system mounts](#Step-8---File-system-mounts)
-        * [Step 9 - Upload the container in the Docker Hub (bonus)](#DockerHub)
+    * [1 - Define the pipeline parameters](#Step-1---define-the-pipeline-parameters)        
+    * [2 - Create transcriptome index file](#Step-2---Create-transcriptome-index-file)
+    * [3 - Collect read files by pairs](#Step-3---Collect-read-files-by-pairs)        
+    * [4 - Perform expression quantification](#Step-4---Perform-expression-quantification)        
+    * [5 - Quality control](#Step-5---Quality-control)
+    * [6 - MultiQC report](#Step-6---MultiQC-report)
+    * [7 - Handle completion event](#Step-7---Handle-completion-event)
+    * [8 - Custom scripts](#Step-8---Custom-scripts)
+    * [9 - Executors](#Step-9---Executors)
+    * [10 - Run in the cloud using AWS Batch](#Step-10---Run-in-the-cloud-using-AWS-Batch)
+    * [11 - Use configuration profiles](#Step-11---Use-configuration-profiles)
+    * [12 - Run a pipeline from a GitHub repository](#Step-12---Run-a-pipeline-from-a-GitHub-repository)
+    * [13 - Conda/Bioconda packages](#conda)
+    * [14 - Metrics and reports](#Step-14---Metrics-and-reports)
+* [Docker hands-on](#Docker-hands-on)
+    * [1 - Run a container](#Step-1---Run-a-container)
+    * [2 - Pull a container](#Step-2---Pull-a-container)
+    * [3 - Run a container in interactive mode](#Step-3---Run-a-container-in-interactive-mode)
+    * [4 - Your first Dockerfile](#Step-4---Your-first-Dockerfile)
+    * [5 - Build the image](#Step-5---Build-the-image)
+    * [6 - Add a software package to the image](#Step-6---Add-a-software-package-to-the-image)
+    * [7 - Run Salmon in the container](#Step-7---Run-Salmon-in-the-container)
+    * [8 - File system mounts](#Step-8---File-system-mounts)
+    * [9 - Upload the container in the Docker Hub (bonus)](#DockerHub)
 * [Where to get help](#Where-to-get-help)        
 * [More resources](#More-resources)
 
@@ -256,7 +256,7 @@ The script `script4.nf` adds the `quantification` process.
 In this script note as the `index_ch` channel, declared as output in the `index` process, 
 is now used as a channel in the input section.  
 
-Also note as the second input is declared as a `set` composed by two elements: 
+Also note as the second input is declared as a `tuple` composed by two elements: 
 the `pair_id` and the `reads` in order to match the structure of the items emitted 
 by the `read_pairs_ch` channel.
 
@@ -286,12 +286,6 @@ to your script.
 
 #### Exercise 4.1 
 
-Add a [tag](https://www.nextflow.io/docs/latest/process.html#tag) directive to the 
-`quantification` process to provide a more readable execution log.
-
-
-#### Exercise 4.2 
-
 Add a [publishDir](https://www.nextflow.io/docs/latest/process.html#publishdir) directive 
 to the `quantification` process to store the process results into a directory of your choice. 
 
@@ -301,8 +295,7 @@ In this step you have learned:
  
 1. How to connect two processes by using the channel declarations
 2. How to resume the script execution skipping already already computed steps 
-3. How to use the `tag` directive to provide a more readable execution output
-4. How to use the `publishDir` to store a process results in a path of your choice 
+3. How to use the `publishDir` to store a process results in a path of your choice 
 
 
 ### Step 5 - Quality control 
@@ -498,12 +491,12 @@ The built-in support for [AWS Batch](https://aws.amazon.com/batch/) allows the e
 only changing a few settings in the `nextflow.config` file. For example: 
 
 ```
-    workDir = 's3://cbcrg-eu/work'
+    process.container = 'nextflow/rnaseq-nf:latest' 
     process.executor = 'awsbatch'
-    process.queue = 'demo'
-    process.container = 'nextflow/rnaseq-nf'      
-    executor.awscli = '/home/ec2-user/miniconda/bin/aws'
-    aws.region = 'eu-west-1'  
+    process.queue = 'nextflow-ci'
+    workDir = 's3://nextflow-ci/work'
+    aws.region = 'eu-west-1'
+    aws.batch.cliPath = '/home/ec2-user/miniconda/bin/aws'
 ```
 
 A S3 bucket must be provide by using the `workDir` configuration setting. Also the name of a queue 
@@ -535,10 +528,10 @@ profiles {
   }
 
   batch {
-    workDir = 's3://cbcrg-eu/work' 
+    process.container = 'nextflow/rnaseq-nf:latest' 
     process.executor = 'awsbatch'
-    process.queue = 'demo'
-    process.container = 'nextflow/rnaseq-nf'  
+    process.queue = 'nextflow-ci'
+    workDir = 's3://nextflow-ci/work'
     aws.region = 'eu-west-1'
     aws.batch.cliPath = '/home/ec2-user/miniconda/bin/aws'
   }

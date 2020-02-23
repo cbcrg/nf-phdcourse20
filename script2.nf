@@ -1,24 +1,20 @@
 /* 
  * pipeline input parameters 
  */
-params.reads = "$baseDir/data/ggal/*_{1,2}.fq"
-params.transcriptome = "$baseDir/data/ggal/transcriptome.fa"
+params.reads = "$baseDir/data/ggal/gut_{1,2}.fq"
+params.transcript = "$baseDir/data/ggal/transcriptome.fa"
 params.multiqc = "$baseDir/multiqc"
 params.outdir = "results"
 
 log.info """\
          R N A S E Q - N F   P I P E L I N E    
          ===================================
-         transcriptome: ${params.transcriptome}
+         transcriptome: ${params.transcript}
          reads        : ${params.reads}
          outdir       : ${params.outdir}
          """
          .stripIndent()
 
-/* 
- * create a transcriptome file object given then transcriptome string parameter
- */
-transcriptome_file = file(params.transcriptome)
  
 /* 
  * define the `index` process that create a binary index 
@@ -27,10 +23,10 @@ transcriptome_file = file(params.transcriptome)
 process index {
     
     input:
-    file transcriptome from transcriptome_file
+    path transcriptome from params.transcript
      
     output:
-    file 'index' into index_ch
+    path 'index' into index_ch
 
     script:       
     """
