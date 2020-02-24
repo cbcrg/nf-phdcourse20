@@ -22,8 +22,9 @@ Genome Campus, Hinxton, Cambridge, UK.
     * [10 - Run in the cloud using AWS Batch](#Step-10---Run-in-the-cloud-using-AWS-Batch)
     * [11 - Use configuration profiles](#Step-11---Use-configuration-profiles)
     * [12 - Run a pipeline from a GitHub repository](#Step-12---Run-a-pipeline-from-a-GitHub-repository)
-    * [13 - Conda/Bioconda packages](#conda)
+    * [13 - Conda/Bioconda packages](#Step-13---Condabioconda-packages)
     * [14 - Metrics and reports](#Step-14---Metrics-and-reports)
+    * [15 - Modularization with DSL2](#Step-15---Modularization-with-DSL2)
 * [Docker hands-on](#Docker-hands-on)
     * [1 - Run a container](#Step-1---Run-a-container)
     * [2 - Pull a container](#Step-2---Pull-a-container)
@@ -594,7 +595,7 @@ Revision are defined by using Git tags or branches defined in the project reposi
 This allows a precise control of the changes in your project files and dependencies over time. 
 
 
-## <a name="conda"></a> Conda/Bioconda packages
+### Step 13 - Conda/Bioconda packages
 
 Conda is popular package and environment manager. The built-in support for Conda
 allows Nextflow pipelines to automatically creates and activates the Conda 
@@ -617,7 +618,7 @@ process.conda = "env.yml"
 See the [Nextflow](https://www.nextflow.io/docs/latest/conda.html) 
 in the Nextflow documentation for details.
 
-## Metrics and reports 
+### Step 14 - Metrics and reports 
 
 Nextflow is able to produce multiple reports and charts providing several runtime metrics 
 and execution information. 
@@ -644,6 +645,22 @@ representation. Note: this feature requires the installation of [Graphviz](http:
 See [here](https://www.nextflow.io/docs/latest/tracing.html#dag-visualisation) for details.
 
 Note: runtime metrics may be incomplete for run short running tasks as in the case of this tutorial.
+
+### Step 15 - Modularization with DSL2
+
+Nextflow allow the definition of modules of tasks and sub-workflows. 
+
+The script `rnaseq-tasks.nf` defines the same processes we used in the previously examples. 
+
+These tasks are includes in the script `rnaseq-flow.nf` which defines the workflow logic 
+to be executed. 
+
+Finally the sub-workflow is include in the script `script8.nf` that's used as entry point 
+for the sake of this tutorial.
+
+Run this example with the command: 
+
+    nextflow run script8.nf
 
 ## Docker hands-on 
 
