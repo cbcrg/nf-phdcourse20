@@ -1,6 +1,6 @@
 # Nextflow training for CRG PhD course 2020
 
-Project repository for the Nextflow training taking place online on the 11th of November 2020 in the framework of the CRG PhD introductory course 2020.
+Project repository for the Nextflow introductory training taking place online on the 11th of November 2020 in the framework of the CRG PhD introductory course 2020.
 
 ## Table of Contents
 
@@ -697,7 +697,7 @@ docker run hello-world
 The pull command allows you to download a Docker image without running it. For example: 
 
 ```
-docker pull debian:wheezy 
+docker pull debian:jessie-slim
 ```
 
 The above command download a Debian Linux image.
@@ -709,7 +709,7 @@ Launching a BASH shell in the container allows you to operate in an interactive 
 in the containerised operating system. For example: 
 
 ```
-docker run -it debian:wheezy bash 
+docker run -it debian:jessie-slim bash 
 ``` 
 
 Once launched the container you wil noticed that's running as root (!). 
@@ -723,7 +723,7 @@ Docker images are created by using a so called `Dockerfile` i.e. a simple text f
 containing a list of commands to be executed to assemble and configure the image
 with the software packages required.    
 
-In this step you will create a Docker image containing the Samtools tool.
+In this step you will create a Docker image containing the Salmon tool.
 
 
 Warning: the Docker build process automatically copies all files that are located in the 
@@ -736,7 +736,7 @@ Then use your favourite editor eg. `vim` to create a file named `Dockerfile` and
 following content: 
 
 ```
-FROM debian:wheezy 
+FROM debian:jessie-slim
 
 MAINTAINER <your name>
 
@@ -810,7 +810,7 @@ Use the `exit` command to terminate the interactive session.
 
 Create an genome index file by running Salmon in the container. 
 
-Try to run Bowtie in the container with the following command: 
+Try to run Salmon in the container with the following command: 
 
 ```
 docker run my-image \
