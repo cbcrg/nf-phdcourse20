@@ -1,7 +1,6 @@
-# Enabling reproducible data analysis with Nextflow and containers
+# Nextflow training for CRG PhD course 2020
 
-Project repository for the shared FAANG workshop taking place on the 26th of February 2020  in the Wellcome 
-Genome Campus, Hinxton, Cambridge, UK.
+Project repository for the Nextflow training taking place online on the 11th of November 2020 in the framework of the CRG PhD introductory course 2020.
 
 ## Table of Contents
 
