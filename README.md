@@ -70,7 +70,7 @@ A workflow engine for data analysis pipelines with a strong focus on enabling:
 Clone this repository with the following command: 
 
 ```
-git clone https://github.com/BovReg/nf-faang-workshop20.git && cd nf-faang-workshop20
+git clone https://github.com/cbcrg/nf-phdcourse20.git && cd nf-phdcourse20 
 ```
 
 Then, install Nextflow by using the following command: 
@@ -891,8 +891,3 @@ questions.
 
 * [CalliNGS-NF](https://github.com/CRG-CNAG/CalliNGS-NF) - An Variant calling pipeline implementing GATK best practices. 
 * [nf-core](http://nf-co.re/) - A community collection of production ready omics pipelines. 
-
-## Funding
-
-BovReg project has received funding from the European Union’s Horizon 2020 research and innovation program under Grant 
-Agreement ID. [815668](https://cordis.europa.eu/project/id/815668).
