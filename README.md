@@ -869,7 +869,7 @@ docker pull <user-name>/my-image
 Note how after a pull and push operation, Docker prints the container digest number e.g. 
 
 ```
-Digest: sha256:aeacbd7ea1154f263cda972a96920fb228b2033544c2641476350b9317dab266
+Digest: sha256:0ac11ff903d39ad7db18e63c8958fb11864192840b3d9ece823007a54f3703e0
 Status: Downloaded newer image for nextflow/rnaseq-nf:latest
 ```
 
@@ -877,7 +877,7 @@ This is a unique and immutable identifier that can be used to reference containe
 in a univocally manner. For example: 
 
 ```
-docker pull nextflow/rnaseq-nf@sha256:aeacbd7ea1154f263cda972a96920fb228b2033544c2641476350b9317dab266
+docker pull nextflow/rnaseq-nf@sha256:0ac11ff903d39ad7db18e63c8958fb11864192840b3d9ece823007a54f3703e0
 ```
 
 ## Where to get help
