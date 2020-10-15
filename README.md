@@ -538,14 +538,14 @@ profiles {
 } 
 ```
 
-The above configuration defines two profiles: `standard` and `cluster`. The name of the 
+The above configuration defines three profiles: `standard`, `cluster` and `batch`. The name of the 
 profile to use can be specified when running the pipeline script by using the `-profile` option. For example: 
 
 ```
 ./nextflow run script7.nf -profile cluster 
 ```
 
-The profile `standard` is used by default if no other profile is specified by the user. 
+The profile `standard` is used by default if no other profile is specified by the user. Also, note that two profiles can be used simultaneously by providing them separated by a comma `-profile standard, cluster`.
 
 
 #### Recap 
