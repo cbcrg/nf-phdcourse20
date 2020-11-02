@@ -177,7 +177,7 @@ singularity.enabled = true
 
 #### Exercise 2.1 
 
-Enable the Docker execution by default adding the above setting in the `nextflow.config` file.
+Enable the Singularity execution by default adding the above setting in the `nextflow.config` file.
 
 #### Exercise 2.2 
 
