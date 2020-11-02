@@ -58,9 +58,9 @@ A workflow engine for data analysis pipelines with a strong focus on enabling:
 ### Prerequisites
 
 * Unix-like OS (Linux, macOS, etc.)
-* [Java](http://jdk.java.net/) 8 or later 
-* [Docker](https://www.docker.com/) engine 1.10.x (or later) 
-* [Singularity](https://github.com/sylabs/singularity) 2.5.x (or later, optional)
+* [Java](http://jdk.java.net/) 8 or later
+* [Singularity](https://github.com/sylabs/singularity) 2.5.x (or later)
+* [Docker](https://www.docker.com/) engine 1.10.x (or later, optional)
 * [Conda](https://conda.io/) 4.5 (or later, optional) 
 * [Graphviz](http://www.graphviz.org/) (optional)
 * [AWS Batch](https://aws.amazon.com/batch/) computing environment properly configured (optional)
@@ -159,20 +159,20 @@ Try to run it by using the command:
 
 The execution will fail because Salmon is not installed in your environment. 
 
-Add the command line option `-with-docker` to launch the execution through a Docker container
+Add the command line option `-with-singularity` to launch the execution through a Singularity container
 as shown below: 
 
 ```
-./nextflow run script2.nf -with-docker
+./nextflow run script2.nf -with-singularity
 ```
 
-This time it works because it uses the Docker container `nextflow/rnaseq-nf` defined in the 
+This time it works because it uses the Singularity container `nextflow/rnaseq-nf` defined in the 
 `nextflow.config` file. 
 
-In order to avoid to add the option `-with-docker` add the following line in the `nextflow.config` file: 
+In order to avoid to add the option `-with-singularity` add the following line in the `nextflow.config` file: 
 
 ```
-docker.enabled = true
+singularity.enabled = true
 ```
 
 #### Exercise 2.1 
